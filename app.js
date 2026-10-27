@@ -15,7 +15,7 @@ function filterCards(){app.querySelectorAll(".collection").forEach(x=>{x.hidden=
 const mobile=()=>matchMedia("(max-width:680px)").matches;
 function layout(){return state.layout==="auto"?(mobile()?"vertical":"horizontal"):state.layout}
 function pageMode(){const token=location.hash.split("/")[2];return store.marvel[token]?token:"release"}
-function renderTimeline(){state.mode=pageMode();state.selected=null;const mode=store.marvel[state.mode];app.innerHTML=header()+'<main id="main"><section class="detail-head wrap"><div class="crumb"><a href="#/">Discover</a> › Marvel › '+esc(mode.label)+'</div><div class="detail-title"><div><div class="kicker" style="margin-top:27px">Collection 01 / Films & television</div><h1>Marvel Timeline<span style="color:var(--green)">.</span></h1><p>'+esc(mode.caption)+'</p></div><div class="counter">01 / 03</div></div></section><section class="toolbar"><div class="wrap toolbar-inner"><div class="tabs">'+Object.entries(store.marvel).map(([key,item])=>'<button class="'+(state.mode===key?'active':'')+'" data-mode="'+key+'">'+esc(item.label)+'</button>').join("")+'</div><div class="layout-switch"><span class="layout-label">LAYOUT</span>'+["auto","horizontal","vertical"].map(x=>'<button class="'+(state.layout===x?'active':'')+'" data-layout="'+x+'">'+(x==="auto"?"Auto":x==="horizontal"?"↔ Horizontal":"↕ Vertical")+'</button>').join("")+'</div></div></section><section class="timeline-shell" aria-label="Interactive Marvel timeline map"><div class="frame-top"><span>◉ &nbsp; '+(state.mode==="release"?"2000":esc(mode.events[0].date))+' — '+esc(mode.events[mode.events.length-1].date)+'</span><span class="hint">SWIPE OR DRAG IN ANY DIRECTION · TAP CIRCLES FOR DETAILS</span></div><div id="stage-scroller" class="stage-scroller" tabindex="0" role="region" aria-label="Timeline map. Swipe or scroll to visit events before or after the origin."><div id="timeline-stage" class="timeline-stage"></div></div><div class="frame-bottom"><span>'+(layout()==="vertical"?"↑ EARLIER EVENTS &nbsp; · &nbsp; LATER EVENTS ↓":"← EARLIER EVENTS &nbsp; · &nbsp; LATER EVENTS →")+'</span><button type="button" class="reset-origin" data-reset-origin>◎ Return to origin</button><div class="nudge"><button data-pan="-1" aria-label="Scroll backward">←</button><button data-pan="1" aria-label="Scroll forward">→</button></div></div></section><div class="wrap branch-options"><label><input type="checkbox" id="branches-toggle" '+(state.branches?'checked':'')+'> Show related branches and alternate continuities</label><span class="disclaimer">Prototype content is illustrative. Future entries will support image credits, citations and sources.</span></div></main>'+footer();app.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>{location.hash="#/marvel/"+b.dataset.mode}));app.querySelectorAll("[data-layout]").forEach(b=>b.addEventListener("click",()=>{state.layout=b.dataset.layout;renderTimeline()}));app.querySelector("#branches-toggle").addEventListener("change",e=>{state.branches=e.target.checked;draw(true)});app.querySelectorAll("[data-pan]").forEach(b=>b.addEventListener("click",()=>{let x=document.querySelector("#stage-scroller");if(layout()==="vertical")x.scrollBy({top:320*Number(b.dataset.pan),behavior:"smooth"});else x.scrollBy({left:420*Number(b.dataset.pan),behavior:"smooth"})}));const x=app.querySelector("#stage-scroller");
+function renderTimeline(){state.mode=pageMode();state.selected=null;const mode=store.marvel[state.mode];app.innerHTML=header()+'<main id="main"><section class="detail-head wrap"><div class="crumb"><a href="#/">Discover</a> › Marvel › '+esc(mode.label)+'</div><div class="detail-title"><div><div class="kicker" style="margin-top:27px">Collection 01 / Films & television</div><h1>Marvel Timeline<span style="color:var(--green)">.</span></h1><p>'+esc(mode.caption)+'</p></div><div class="counter">01 / 03</div></div></section><section class="toolbar"><div class="wrap toolbar-inner"><div class="tabs">'+Object.entries(store.marvel).map(([key,item])=>'<button class="'+(state.mode===key?'active':'')+'" data-mode="'+key+'">'+esc(item.label)+'</button>').join("")+'</div><div class="layout-switch"><span class="layout-label">LAYOUT</span>'+["auto","horizontal","vertical"].map(x=>'<button class="'+(state.layout===x?'active':'')+'" data-layout="'+x+'">'+(x==="auto"?"Auto":x==="horizontal"?"↔ Horizontal":"↕ Vertical")+'</button>').join("")+'</div></div></section><section class="timeline-shell" aria-label="Interactive Marvel timeline map"><div class="frame-top"><span>◉ &nbsp; '+(state.mode==="release"?"2000":esc(mode.events[0].date))+' — '+esc(mode.events[mode.events.length-1].date)+'</span><span class="hint">SWIPE OR DRAG IN ANY DIRECTION · TAP CIRCLES FOR DETAILS</span></div><div class="map-legend" aria-label="Timeline legend"><span><i class="swatch main-swatch"></i> Main MCU</span><span><i class="swatch fox-swatch"></i> Fox / X-Men</span><span><i class="swatch sony-swatch"></i> Sony / Spider-Man</span><span><i class="swatch join-swatch"></i> Crossover connection</span></div><div id="stage-scroller" class="stage-scroller" tabindex="0" role="region" aria-label="Timeline map. Swipe or scroll to visit events before or after the origin."><div id="timeline-stage" class="timeline-stage"></div></div><div class="frame-bottom"><span>'+(layout()==="vertical"?"↑ EARLIER EVENTS &nbsp; · &nbsp; LATER EVENTS ↓":"← EARLIER EVENTS &nbsp; · &nbsp; LATER EVENTS →")+'</span><button type="button" class="reset-origin" data-reset-origin>◎ Return to origin</button><div class="nudge"><button data-pan="-1" aria-label="Scroll backward">←</button><button data-pan="1" aria-label="Scroll forward">→</button></div></div></section><div class="wrap branch-options"><label><input type="checkbox" id="branches-toggle" '+(state.branches?'checked':'')+'> Show related branches and alternate continuities</label><span class="disclaimer">Prototype content is illustrative. Future entries will support image credits, citations and sources.</span></div></main>'+footer();app.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>{location.hash="#/marvel/"+b.dataset.mode}));app.querySelectorAll("[data-layout]").forEach(b=>b.addEventListener("click",()=>{state.layout=b.dataset.layout;renderTimeline()}));app.querySelector("#branches-toggle").addEventListener("change",e=>{state.branches=e.target.checked;draw(true)});app.querySelectorAll("[data-pan]").forEach(b=>b.addEventListener("click",()=>{let x=document.querySelector("#stage-scroller");if(layout()==="vertical")x.scrollBy({top:450*Number(b.dataset.pan),behavior:"smooth"});else x.scrollBy({left:480*Number(b.dataset.pan),behavior:"smooth"})}));const x=app.querySelector("#stage-scroller");
   let dragging=false,startX=0,startY=0,left=0,top=0,moved=false;
   // Desktop mouse wheels move along the horizontal chronology; trackpad panning still works.
   x.addEventListener("wheel",e=>{
@@ -43,84 +43,132 @@ function renderTimeline(){state.mode=pageMode();state.selected=null;const mode=s
   x.addEventListener("click",e=>{if(moved){e.preventDefault();e.stopPropagation()}},true);
   app.querySelector("[data-reset-origin]").addEventListener("click",()=>draw(true));
   draw(true)}
-function makeNode(item,x,centre,secondary,origin){
+function makeNode(item,x,centre,secondary,origin,linked){
   const btn=document.createElement("button");
   btn.type="button";
-  btn.className="node"+(secondary?" secondary":"")+(origin?" is-origin":"");
+  btn.className="node"+(secondary?" secondary":"")+(origin?" is-origin":"")+(linked?" is-crossover":"");
   btn.style.left=x+"px";
   btn.style.top=(centre-38)+"px";
-  btn.innerHTML=(origin?'<span class="origin">MCU ORIGIN · 2008</span>':"")+
+  const originText=state.mode==="release"?"MCU ORIGIN · 2008":"STARTING POINT";
+  btn.innerHTML=(origin?'<span class="origin">'+originText+'</span>':"")+
     '<span class="circle">'+esc(item.icon)+'</span>'+
-    '<span class="node-caption"><span class="date">'+esc(item.date)+'</span><span class="name">'+esc(item.title)+'</span></span>';
-  btn.setAttribute("aria-label",item.title+", "+item.date+". Open details");
+    '<span class="node-caption"><span class="date">'+esc(item.date)+'</span><span class="name">'+esc(item.title)+'</span>'+
+    (linked?'<span class="join-caption">⇢ CROSSOVER</span>':"")+'</span>';
+  btn.setAttribute("aria-label",item.title+", "+item.date+(linked?". Connected crossover event.":".") +" Open details");
   btn.addEventListener("click",()=>openEvent(item,secondary));
   return btn;
 }
-/* The focal origin need not be the earliest date. Every track uses one shared
-   chronological axis, so pre-origin film releases remain behind the origin. */
 let previousVertical=null;
 function draw(resetPosition=false){
-  const stage=document.querySelector("#timeline-stage");
-  const scroller=document.querySelector("#stage-scroller");
+  const stage=document.querySelector("#timeline-stage"), scroller=document.querySelector("#stage-scroller");
   if(!stage||!scroller)return;
-  const vertical=layout()==="vertical", mode=store.marvel[state.mode];
+  const vertical=layout()==="vertical", narrow=mobile(), mode=store.marvel[state.mode];
   if(previousVertical!==null&&previousVertical!==vertical)resetPosition=true;
   previousVertical=vertical;
-  const main=mode.events, branches=state.branches?mode.branches:[];
-  const getYear=(o,fallback)=>Number.isFinite(Number(o.year))?Number(o.year):(parseInt(String(o.date),10)||fallback);
-  const originYear=getYear(main[0],2008);
-  const groups=branches.map((b,i)=>({
-    ...b,
-    items:(b.events&&b.events.length?b.events:[b]).map(e=>({...e,year:getYear(e,getYear(main[b.anchor||0],originYear))})),
-    side:b.side||(i%2===0?"above":"below")
+  const all=[];
+  const main=mode.events;
+  const groups=(state.branches?mode.branches:[]).map((branch,i)=>({
+    ...branch,
+    laneIndex:i,
+    items:branch.events&&branch.events.length?branch.events:[{...branch,
+      date:branch.date==="Alternate"?main[branch.anchor||0].date:branch.date}]
   }));
-  const years=[...new Set(main.map((e,i)=>getYear(e,originYear+i)).concat(groups.flatMap(b=>b.items.map(e=>e.year))))].sort((a,b)=>a-b);
-  const yearPosition=new Map(years.map((year,index)=>[year,index]));
-  const stride=vertical?214:238, lead=vertical?200:190, tail=vertical?240:225;
-  const axis=year=>lead+yearPosition.get(year)*stride;
-  const originAxis=axis(originYear);
-  const width=vertical?980:lead+(years.length-1)*stride+tail;
-  const height=vertical?lead+(years.length-1)*stride+tail:690;
-  const primary=vertical?480:300;
-  const foxLane=vertical?795:112;
-  const sonyLane=vertical?165:505;
+  const sortable=item=>{
+    if(item.released)return item.released;
+    const y=parseInt(String(item.date),10)||2008;
+    return String(y).padStart(4,"0")+"-06-01";
+  };
+  main.forEach((event,i)=>all.push({item:event,track:"main",key:"main/"+event.id,
+    sort:sortable(event),secondary:false,origin:i===0}));
+  groups.forEach(branch=>branch.items.forEach(item=>all.push({
+    item,track:branch.id,key:branch.id+"/"+item.id,sort:sortable(item),secondary:true,origin:false
+  })));
+  // Use release-date precision where available: no stacked same-year movie nodes.
+  const sorted=all.slice().sort((a,b)=>a.sort.localeCompare(b.sort)||a.key.localeCompare(b.key));
+  const step=vertical?(narrow?170:188):180;
+  const lead=vertical?190:195,tail=vertical?225:245;
+  const map=new Map(sorted.map((item,i)=>[item.key,lead+i*step]));
+  const axis=entry=>map.get(entry.key);
+  const first=main[0];
+  const originAxis=map.get("main/"+first.id);
+  const mainEnd=map.get("main/"+main[main.length-1].id);
+  const width=vertical?(narrow?430:850):lead+(sorted.length-1)*step+tail;
+  const height=vertical?lead+(sorted.length-1)*step+tail:660;
+  const spine=vertical?(narrow?102:420):320;
+  const tracks=vertical?(narrow?[299,313]:[180,650]):[126,519];
+  const lane=(track,index)=>track==="main"?spine:tracks[index%tracks.length];
+  const px=(location,side)=>vertical?side:location;
+  const py=(location,side)=>vertical?location:side;
   stage.style.width=width+"px";
   stage.style.height=height+"px";
   stage.style.minWidth="0";
   scroller.classList.toggle("vertical",vertical);
-  const x=(year,lane)=>vertical?lane:axis(year),y=(year,lane)=>vertical?axis(year):lane;
-  const path=[];
-  const endAxis=axis(getYear(main[main.length-1],originYear));
-  if(vertical)path.push('<path d="M'+primary+" "+originAxis+" V"+(endAxis+35)+'"/>');
-  else path.push('<path d="M'+originAxis+" "+primary+" H"+(endAxis+55)+'"/>');
-  const nodes=main.map((e,i)=>({event:e,x:x(getYear(e,originYear+i),primary),y:y(getYear(e,originYear+i),primary),secondary:false,origin:i===0}));
+  const svg=[];
+  svg.push('<defs><marker id="join-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6e9954"/></marker></defs>');
+  const segment=(start,end,side,style)=>{
+    if(vertical)return '<path class="'+style+'" d="M '+side+" "+start+" V "+end+'"/>';
+    return '<path class="'+style+'" d="M '+start+" "+side+" H "+end+'"/>';
+  };
+  const arrow=(position,side,primary)=>{
+    const s=primary?"main-arrow":"branch-arrow";
+    return vertical?'<path class="'+s+'" d="M '+(side-7)+" "+(position-5)+" L "+side+" "+(position+4)+" L "+(side+7)+" "+(position-5)+'"/>':
+      '<path class="'+s+'" d="M '+(position-5)+" "+(side-7)+" L "+(position+4)+" "+side+" L "+(position-5)+" "+(side+7)+'"/>';
+  };
+  svg.push(segment(originAxis-35,mainEnd+40,spine,"main-track"));
+  const mainEntries=all.filter(n=>n.track==="main");
+  mainEntries.slice(1).forEach((e,i)=>svg.push(arrow((axis(e)+axis(mainEntries[i]))/2,spine,true)));
   const labels=[];
-  groups.forEach((b,i)=>{
-    const lane=i%2===0?foxLane:sonyLane;
-    const yearsOnTrack=b.items.map(e=>e.year);
-    const lo=Math.min(originYear,...yearsOnTrack),hi=Math.max(originYear,...yearsOnTrack);
-    const first=axis(lo),last=axis(hi);
-    const stroke=b.side==="above"?"fox":"sony";
-    if(vertical){
-      path.push('<path class="branch '+stroke+'" d="M'+primary+" "+originAxis+" H"+lane+'"/>');
-      path.push('<path class="branch '+stroke+'" d="M'+lane+" "+first+" V"+last+'"/>');
-    }else{
-      path.push('<path class="branch '+stroke+'" d="M'+originAxis+" "+primary+" V"+lane+'"/>');
-      path.push('<path class="branch '+stroke+'" d="M'+first+" "+lane+" H"+last+'"/>');
-    }
-    b.items.forEach(e=>nodes.push({event:e,x:x(e.year,lane),y:y(e.year,lane),secondary:true,origin:false}));
-    labels.push({text:b.label,x:vertical?lane:Math.max(100,first),y:vertical?Math.max(40,first-85):lane-82});
-  });
-  stage.innerHTML='<svg class="timeline-lines" viewBox="0 0 '+width+" "+height+'" preserveAspectRatio="none" aria-hidden="true">'+path.join("")+'</svg>';
-  labels.forEach(b=>{const el=document.createElement("span");el.className="branch-label";el.style.left=b.x+"px";el.style.top=b.y+"px";el.textContent=b.text;stage.appendChild(el)});
-  nodes.forEach(p=>stage.appendChild(makeNode(p.event,p.x,p.y,p.secondary,p.origin)));
-  if(resetPosition){
-    requestAnimationFrame(()=>{
-      if(!scroller.isConnected)return;
-      scroller.scrollLeft=vertical?Math.max(0,primary-scroller.clientWidth*.45):Math.max(0,originAxis-scroller.clientWidth*.24);
-      scroller.scrollTop=vertical?Math.max(0,originAxis-175):0;
+  const crossover=new Set();
+  const rejoins=[];
+  groups.forEach(branch=>{
+    const side=lane(branch.id,branch.laneIndex);
+    const nodes=all.filter(n=>n.track===branch.id);
+    if(!nodes.length)return;
+    const a=Math.min(...nodes.map(axis)),b=Math.max(...nodes.map(axis));
+    svg.push(segment(a-10,b+24,side,"branch-track "+(branch.laneIndex===0?"fox-track":"sony-track")));
+    nodes.slice(1).filter((_,i)=>i%2===0).forEach((e,i)=>{
+      const preceding=nodes[nodes.indexOf(e)-1];
+      svg.push(arrow((axis(e)+axis(preceding))/2,side,false));
     });
-  }
+    labels.push({title:branch.label,position:a-93,side,track:branch.id});
+    (branch.rejoins||[]).forEach(join=>{
+      const source=map.get(branch.id+"/"+join.fromId),target=map.get("main/"+join.toId);
+      if(source===undefined||target===undefined)return;
+      const middle=(source+target)*.5;
+      // Curved cross-continuity link; it does not mean the branch ceases to exist.
+      const d=vertical?
+        "M "+side+" "+source+" C "+side+" "+middle+", "+spine+" "+middle+", "+spine+" "+target:
+        "M "+source+" "+side+" C "+middle+" "+side+", "+middle+" "+spine+", "+target+" "+spine;
+      svg.push('<path class="rejoin-track" d="'+d+'" marker-end="url(#join-arrow)"/>');
+      crossover.add(join.toId);
+      rejoins.push(join);
+    });
+  });
+  // Add SVG above the event buttons so the lines and their arrows remain behind cards.
+  stage.innerHTML='<svg class="timeline-lines" viewBox="0 0 '+width+" "+height+'" aria-hidden="true">'+svg.join("")+'</svg>';
+  const marker=document.createElement("span");
+  marker.className="main-label";
+  marker.textContent=state.mode==="release"?"MAIN MCU TIMELINE":"MAIN TIMELINE";
+  marker.style.left=px(originAxis+(!vertical?85:0),spine+(vertical?(narrow?75:64):0))+"px";
+  marker.style.top=py(originAxis+(vertical?-108:0),spine+(vertical?0:-88))+"px";
+  stage.appendChild(marker);
+  labels.forEach(b=>{
+    const el=document.createElement("span");
+    el.className="branch-label";
+    el.style.left=px(b.position,b.side)+"px";
+    el.style.top=py(b.position,b.side-(!vertical?85:0))+"px";
+    el.textContent=b.title;
+    stage.appendChild(el);
+  });
+  all.forEach(n=>{
+    const p=axis(n),side=n.track==="main"?spine:lane(n.track,groups.find(g=>g.id===n.track)?.laneIndex||0);
+    stage.appendChild(makeNode(n.item,px(p,side),py(p,side),n.secondary,n.origin,crossover.has(n.item.id)&&n.track==="main"));
+  });
+  if(resetPosition)requestAnimationFrame(()=>{
+    if(!scroller.isConnected)return;
+    scroller.scrollLeft=vertical?Math.max(0,spine-scroller.clientWidth*(narrow?.29:.5)):Math.max(0,originAxis-scroller.clientWidth*.24);
+    scroller.scrollTop=vertical?Math.max(0,originAxis-145):0;
+  });
 }
 function openEvent(item,branch){document.querySelectorAll(".panel-backdrop,.event-panel").forEach(x=>x.remove());const back=document.createElement("div");back.className="panel-backdrop";const panel=document.createElement("aside");panel.className="event-panel";panel.setAttribute("role","dialog");panel.setAttribute("aria-modal","true");panel.setAttribute("aria-label",item.title);panel.innerHTML='<div class="panel-header"><span class="panel-eyebrow">'+(branch?"RELATED BRANCH":"TIMELINE EVENT")+'</span><button class="close-panel" aria-label="Close details">×</button></div><div class="panel-icon">'+esc(item.icon)+'</div><div class="panel-date">'+esc(item.date)+'</div><h2>'+esc(item.title)+'</h2><p>'+esc(item.summary)+'</p><div class="panel-footer">This entry is part of the first Timelines prototype. Artwork and sourced details can be added as the library grows.</div>';document.body.append(back,panel);const close=()=>{back.remove();panel.remove();document.removeEventListener("keydown",onKey)};const onKey=e=>{if(e.key==="Escape")close()};back.addEventListener("click",close);panel.querySelector("button").addEventListener("click",close);document.addEventListener("keydown",onKey);panel.querySelector("button").focus()}
 function route(){if(location.hash.startsWith("#/marvel/"))renderTimeline();else renderHome();window.scrollTo(0,0)}

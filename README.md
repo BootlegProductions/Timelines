@@ -38,3 +38,9 @@ The icons and circle gradients are temporary graphic placeholders. Replace them 
 The first Marvel events are illustrative, not a complete canon or definitive chronology. Entries should be reviewed and linked to reliable sources before expanding into a public reference website. Timelines is an independent fan-oriented prototype and not affiliated with Marvel.
 
 © 2026 Timelines prototype.
+
+## v0.3 release-map connections
+
+The film-release view currently lists Marvel Studios MCU films through 2026 and examples from the Fox X-Men and Sony Spider-Man-related film catalogues. The axis orders individual releases rather than placing every film from a year on top of another. Branches support `rejoins: [{fromId, toId, label, description}]` to mark identifiable crossover films. The crossing line describes a link between film continuities, not a claim that their histories or canons merge completely.
+
+Release-order reference: https://editorial.rottentomatoes.com/guide/marvel-movie-release-timeline/ and https://www.thewrap.com/x-men-movies-in-chronological-order-how-to-watch/
