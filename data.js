@@ -1,4 +1,4 @@
-/* Timelines catalog. Add new timelines and event entries here. */
+/* Curated Marvel timelines. In-universe story dates are approximate. */
 window.TIMELINES_DATA = {
   "collections": [
     {
@@ -942,121 +942,578 @@ window.TIMELINES_DATA = {
     },
     "universe": {
       "label": "In-universe",
-      "caption": "Selected events in fictional story order. Dates are approximate within MCU continuity.",
+      "caption": "Selected events in approximate MCU story order, not release order. Alternative timelines are shown as separate branches; dates may be approximate.",
       "events": [
         {
-          "id": "first",
+          "id": "early",
+          "date": "Ancient history",
+          "title": "Wakanda's earliest adventures",
+          "summary": "Eyes of Wakanda explores stories from the distant past, long before the Avengers.",
+          "icon": "♛",
+          "sortDate": "0001-01-01"
+        },
+        {
+          "id": "steve",
           "date": "1943–45",
           "title": "The First Avenger",
+          "summary": "Steve Rogers becomes Captain America during World War II.",
           "icon": "★",
-          "summary": "Steve Rogers becomes Captain America during the Second World War."
+          "sortDate": "1943-01-01"
         },
         {
-          "id": "marvel",
+          "id": "peggy",
+          "date": "1946",
+          "title": "Agent Carter",
+          "summary": "Peggy Carter works in the post-war intelligence world.",
+          "icon": "✧",
+          "sortDate": "1946-01-01"
+        },
+        {
+          "id": "carol",
           "date": "1995",
           "title": "Captain Marvel",
-          "icon": "✦",
-          "summary": "Carol Danvers becomes involved in a conflict between the Kree and Skrulls."
+          "summary": "Carol Danvers becomes involved in the Kree–Skrull conflict on Earth.",
+          "icon": "✳",
+          "sortDate": "1995-01-01"
         },
         {
-          "id": "iron",
-          "date": "2010",
-          "title": "Tony becomes Iron Man",
+          "id": "ironman",
+          "date": "c. 2010",
+          "title": "Iron Man emerges",
+          "summary": "Tony Stark develops the first Iron Man armours.",
           "icon": "⚙",
-          "summary": "Tony Stark develops the Iron Man armour after his captivity."
+          "sortDate": "2010-01-01"
         },
         {
-          "id": "newyork",
+          "id": "thor",
+          "date": "c. 2011",
+          "title": "Thor arrives on Earth",
+          "summary": "An Asgardian conflict brings Thor to Earth.",
+          "icon": "⚡",
+          "sortDate": "2011-01-01"
+        },
+        {
+          "id": "battle",
           "date": "2012",
           "title": "Battle of New York",
-          "icon": "✳",
-          "summary": "The Avengers join forces to oppose Loki's attack on Earth."
+          "summary": "The original Avengers join together to oppose Loki and the Chitauri.",
+          "icon": "✦",
+          "sortDate": "2012-01-01"
+        },
+        {
+          "id": "shield",
+          "date": "2014",
+          "title": "S.H.I.E.L.D. falls",
+          "summary": "Hydra's infiltration of S.H.I.E.L.D. is exposed.",
+          "icon": "⛨",
+          "sortDate": "2014-01-01"
+        },
+        {
+          "id": "sokovia",
+          "date": "2015",
+          "title": "Battle of Sokovia",
+          "summary": "The Avengers defeat Ultron, raising questions about oversight.",
+          "icon": "◈",
+          "sortDate": "2015-01-01"
+        },
+        {
+          "id": "civilwar",
+          "date": "2016",
+          "title": "The Avengers divide",
+          "summary": "Disagreement over the Sokovia Accords leads to Civil War.",
+          "icon": "⚖",
+          "sortDate": "2016-01-01"
+        },
+        {
+          "id": "blackpanther",
+          "date": "2016",
+          "title": "Wakanda's new king",
+          "summary": "T'Challa takes the throne and considers Wakanda's place in the world.",
+          "icon": "♛",
+          "sortDate": "2016-02-01"
+        },
+        {
+          "id": "ragnarok",
+          "date": "2017",
+          "title": "The fall of Asgard",
+          "summary": "Thor witnesses the destruction of Asgard.",
+          "icon": "⚡",
+          "sortDate": "2017-01-01"
         },
         {
           "id": "snap",
           "date": "2018",
-          "title": "The Blip begins",
+          "title": "The Snap",
+          "summary": "Thanos uses the Infinity Stones, causing half of all living beings to disappear.",
           "icon": "◐",
-          "summary": "Thanos uses the Infinity Stones, erasing half of all life in the universe."
+          "sortDate": "2018-01-01"
         },
         {
-          "id": "return",
+          "id": "fiveyears",
+          "date": "2018–2023",
+          "title": "The five-year Blip",
+          "summary": "Survivors adapt to a world radically changed by the Snap.",
+          "icon": "⌛",
+          "sortDate": "2019-01-01"
+        },
+        {
+          "id": "endgame",
           "date": "2023",
           "title": "The return",
-          "icon": "✹",
-          "summary": "The Avengers undo the Snap, restoring those who disappeared."
+          "summary": "The Avengers travel through time to restore those who disappeared.",
+          "icon": "✦",
+          "sortDate": "2023-01-01"
+        },
+        {
+          "id": "westview",
+          "date": "c. 2023",
+          "title": "Wanda's Westview anomaly",
+          "summary": "Wanda creates the Hex seen in WandaVision.",
+          "icon": "◈",
+          "sortDate": "2023-02-01"
+        },
+        {
+          "id": "sam",
+          "date": "c. 2024",
+          "title": "A new Captain America",
+          "summary": "Sam Wilson takes up the mantle.",
+          "icon": "★",
+          "sortDate": "2024-01-01"
+        },
+        {
+          "id": "shangchi",
+          "date": "c. 2024",
+          "title": "The Ten Rings",
+          "summary": "Shang-Chi confronts his father Wenwu and the Ten Rings.",
+          "icon": "◎",
+          "sortDate": "2024-02-01"
+        },
+        {
+          "id": "nwh",
+          "date": "c. 2024",
+          "title": "Spider-Man multiverse crisis",
+          "summary": "A failed spell brings variants from other Spider-Man realities into the MCU.",
+          "icon": "🕸",
+          "sortDate": "2024-03-01"
+        },
+        {
+          "id": "strange",
+          "date": "c. 2024",
+          "title": "Multiverse of Madness",
+          "summary": "Doctor Strange encounters alternate realities while protecting America Chavez.",
+          "icon": "∞",
+          "sortDate": "2024-04-01"
+        },
+        {
+          "id": "hawkeye",
+          "date": "c. 2024",
+          "title": "Kate Bishop meets Hawkeye",
+          "summary": "Clint Barton and Kate Bishop team up at Christmas.",
+          "icon": "➶",
+          "sortDate": "2024-06-01"
+        },
+        {
+          "id": "wakanda",
+          "date": "c. 2025",
+          "title": "Wakanda meets Talokan",
+          "summary": "New conflicts follow the death of T'Challa.",
+          "icon": "♛",
+          "sortDate": "2025-01-01"
+        },
+        {
+          "id": "kamala",
+          "date": "c. 2025",
+          "title": "Ms. Marvel emerges",
+          "summary": "Kamala Khan becomes a superhero.",
+          "icon": "✳",
+          "sortDate": "2025-02-01"
+        },
+        {
+          "id": "ironheart",
+          "date": "After Wakanda Forever",
+          "title": "Riri returns home",
+          "summary": "Riri Williams develops her own armour in Chicago.",
+          "icon": "⚙",
+          "sortDate": "2025-03-01"
+        },
+        {
+          "id": "guardians",
+          "date": "Later MCU era",
+          "title": "The Guardians' next chapter",
+          "summary": "Rocket's history comes into focus in the Guardians' third film.",
+          "icon": "✶",
+          "sortDate": "2026-01-01"
+        },
+        {
+          "id": "marvels",
+          "date": "Later MCU era",
+          "title": "The Marvels unite",
+          "summary": "Carol, Monica and Kamala discover their linked powers.",
+          "icon": "✳",
+          "sortDate": "2026-02-01"
+        },
+        {
+          "id": "agatha",
+          "date": "After WandaVision",
+          "title": "Agatha's Witches' Road",
+          "summary": "Agatha and her coven pursue the Witches' Road.",
+          "icon": "☾",
+          "sortDate": "2026-03-01"
+        },
+        {
+          "id": "daredevil",
+          "date": "Later MCU era",
+          "title": "Daredevil: Born Again",
+          "summary": "Matt Murdock faces Wilson Fisk's growing power in New York.",
+          "icon": "⚖",
+          "sortDate": "2026-04-01"
+        },
+        {
+          "id": "thunderbolts",
+          "date": "Later MCU era",
+          "title": "The Thunderbolts assemble",
+          "summary": "A team of antiheroes is drawn into a major crisis.",
+          "icon": "✦",
+          "sortDate": "2026-05-01"
         }
       ],
       "branches": [
         {
-          "id": "multiverse",
-          "anchor": 4,
+          "id": "tva",
+          "label": "TVA · OUTSIDE LINEAR TIME",
           "side": "above",
-          "date": "Alternate",
-          "title": "Branching realities",
-          "label": "The multiverse",
-          "icon": "∞",
-          "summary": "Some Marvel stories unfold across alternate timelines and realities rather than a single chronology."
+          "events": [
+            {
+              "id": "lokiescapes",
+              "date": "2012 divergence",
+              "title": "Loki takes the Tesseract",
+              "summary": "An alternate Loki escapes, drawing the attention of the TVA.",
+              "icon": "⌛",
+              "sortDate": "2012-02-01"
+            },
+            {
+              "id": "tvastory",
+              "date": "Outside linear time",
+              "title": "The TVA",
+              "summary": "TVA events cannot be reduced to a normal calendar date; this position is a narrative reference.",
+              "icon": "∞",
+              "sortDate": "2023-03-01"
+            },
+            {
+              "id": "lokiends",
+              "date": "Beyond the timeline",
+              "title": "Loki and the branches",
+              "summary": "Loki assumes a new role supporting the branching realities.",
+              "icon": "✳",
+              "sortDate": "2024-05-01"
+            }
+          ]
+        },
+        {
+          "id": "alternates",
+          "label": "MULTIVERSE · ALTERNATE REALITIES",
+          "side": "below",
+          "events": [
+            {
+              "id": "whatif",
+              "date": "Alternate history",
+              "title": "What If...?",
+              "summary": "Animated stories based on alternate decisions and outcomes.",
+              "icon": "∞",
+              "sortDate": "2016-03-01"
+            },
+            {
+              "id": "xmen",
+              "date": "Separate universe",
+              "title": "X-Men continuities",
+              "summary": "Fox's X-Men film continuities exist outside the original MCU.",
+              "icon": "X",
+              "sortDate": "2023-04-01"
+            },
+            {
+              "id": "deadpool",
+              "date": "Multiverse connection",
+              "title": "Deadpool & Wolverine",
+              "summary": "Characters from other screen continuities cross into MCU multiverse stories.",
+              "icon": "✕",
+              "sortDate": "2025-04-01"
+            }
+          ]
         }
       ]
     },
     "industry": {
       "label": "Studio history",
-      "caption": "Major production and ownership milestones, rather than events in the story world.",
+      "caption": "Real-world milestones in Marvel's publishing, filmmaking, ownership, film rights and television history.",
       "events": [
         {
-          "id": "marvel-comics",
+          "id": "timely",
           "date": "1939",
           "title": "Timely Comics",
+          "summary": "The company that eventually becomes Marvel Comics begins publishing.",
           "icon": "▤",
-          "summary": "The company that eventually became Marvel Comics begins publishing."
+          "sortDate": "1939-01-01"
         },
         {
-          "id": "marvel-name",
+          "id": "fantasticfour",
           "date": "1961",
-          "title": "Marvel era",
-          "icon": "M",
-          "summary": "Fantastic Four marks the beginning of the modern Marvel superhero publishing era."
+          "title": "The Fantastic Four",
+          "summary": "The comic marks a defining point for modern Marvel superheroes.",
+          "icon": "④",
+          "sortDate": "1961-01-01"
+        },
+        {
+          "id": "films",
+          "date": "1993",
+          "title": "Marvel Films",
+          "summary": "Marvel develops a dedicated film and TV adaptations arm.",
+          "icon": "▣",
+          "sortDate": "1993-01-01"
+        },
+        {
+          "id": "bankruptcy",
+          "date": "1996",
+          "title": "Bankruptcy filing",
+          "summary": "Marvel Entertainment Group files for bankruptcy protection.",
+          "icon": "⚖",
+          "sortDate": "1996-01-01"
+        },
+        {
+          "id": "blade",
+          "date": "1998",
+          "title": "Blade reaches cinemas",
+          "summary": "Blade provides an early successful Marvel superhero feature.",
+          "icon": "✦",
+          "sortDate": "1998-01-01"
+        },
+        {
+          "id": "xmen",
+          "date": "2000",
+          "title": "X-Men franchise",
+          "summary": "20th Century Fox's X-Men launches in cinemas.",
+          "icon": "X",
+          "sortDate": "2000-01-01"
+        },
+        {
+          "id": "spiderman",
+          "date": "2002",
+          "title": "Spider-Man blockbuster",
+          "summary": "Sony's Spider-Man launches a major film franchise.",
+          "icon": "🕸",
+          "sortDate": "2002-01-01"
+        },
+        {
+          "id": "financing",
+          "date": "2005",
+          "title": "Marvel self-financing slate",
+          "summary": "Marvel Studios secures a financing arrangement for self-produced films.",
+          "icon": "⌁",
+          "sortDate": "2005-01-01"
+        },
+        {
+          "id": "ironman",
+          "date": "2008",
+          "title": "Iron Man launches MCU",
+          "summary": "Marvel Studios debuts the first film in its interconnected cinematic universe.",
+          "icon": "⚙",
+          "sortDate": "2008-05-01"
+        },
+        {
+          "id": "announcement",
+          "date": "31 Aug 2009",
+          "title": "Disney announces Marvel purchase",
+          "summary": "Disney announces an agreement to acquire Marvel Entertainment.",
+          "icon": "◈",
+          "sortDate": "2009-08-31",
+          "source": "https://d23.com/a-to-z/marvel-entertainment/"
+        },
+        {
+          "id": "closing",
+          "date": "31 Dec 2009",
+          "title": "Disney completes the purchase",
+          "summary": "Marvel Entertainment officially joins Disney.",
+          "icon": "◈",
+          "sortDate": "2009-12-31",
+          "source": "https://thewaltdisneycompany.com/press-releases/disney-completes-marvel-acquisition/"
+        },
+        {
+          "id": "avengers",
+          "date": "2012",
+          "title": "The Avengers",
+          "summary": "Marvel's interconnected film strategy produces a landmark ensemble blockbuster.",
+          "icon": "✦",
+          "sortDate": "2012-05-01"
+        },
+        {
+          "id": "netflix",
+          "date": "2013",
+          "title": "Marvel–Netflix series announced",
+          "summary": "Netflix's connected Marvel Television slate expands the company's screen presence.",
+          "icon": "▣",
+          "sortDate": "2013-11-01"
+        },
+        {
+          "id": "sonydeal",
+          "date": "2015",
+          "title": "Sony–Marvel Spider-Man deal",
+          "summary": "The companies agree to bring Spider-Man into the MCU while Sony retains film distribution.",
+          "icon": "🕸",
+          "sortDate": "2015-02-01"
         },
         {
           "id": "studio",
-          "date": "1993",
-          "title": "Marvel Films",
-          "icon": "▣",
-          "summary": "Marvel creates a film-focused division, a predecessor to Marvel Studios."
+          "date": "2015",
+          "title": "Marvel Studios reporting change",
+          "summary": "Marvel Studios starts reporting directly through Walt Disney Studios.",
+          "icon": "⌁",
+          "sortDate": "2015-09-01"
         },
         {
-          "id": "ironfilm",
-          "date": "2008",
-          "title": "Marvel Studios' Iron Man",
-          "icon": "⚙",
-          "summary": "An independently produced film proves the potential of an interconnected cinematic universe."
+          "id": "foxplan",
+          "date": "2017",
+          "title": "Disney–Fox deal announced",
+          "summary": "Disney announces its intended acquisition of major Fox assets.",
+          "icon": "X",
+          "sortDate": "2017-12-01"
         },
         {
-          "id": "disney",
-          "date": "2009",
-          "title": "Disney acquisition",
-          "icon": "◈",
-          "summary": "Disney announces its agreement to acquire Marvel Entertainment."
+          "id": "foxclose",
+          "date": "20 Mar 2019",
+          "title": "Disney–Fox acquisition closes",
+          "summary": "Disney completes its acquisition of major assets of 21st Century Fox.",
+          "icon": "X",
+          "sortDate": "2019-03-20",
+          "source": "https://thewaltdisneycompany.com/press-releases/disney-21st-century-fox-acquisition-closing-date/"
         },
         {
-          "id": "foxdeal",
+          "id": "tvrestructure",
           "date": "2019",
-          "title": "Disney–Fox deal",
+          "title": "Marvel Television integrates",
+          "summary": "Marvel Television production begins integrating with Marvel Studios.",
+          "icon": "▣",
+          "sortDate": "2019-12-01"
+        },
+        {
+          "id": "wanda",
+          "date": "2021",
+          "title": "WandaVision launches Disney+ MCU TV",
+          "summary": "The first Marvel Studios Disney+ series premieres.",
+          "icon": "◈",
+          "sortDate": "2021-01-15",
+          "source": "https://www.marvel.com/tv-shows/wandavision/1"
+        },
+        {
+          "id": "tvlabel",
+          "date": "2024",
+          "title": "Marvel Television brand revived",
+          "summary": "The Marvel Television label returns for scripted television releases.",
+          "icon": "▣",
+          "sortDate": "2024-05-01"
+        },
+        {
+          "id": "bornagain",
+          "date": "2025",
+          "title": "Daredevil: Born Again",
+          "summary": "The series resumes the story of Matt Murdock and Wilson Fisk.",
+          "icon": "⚖",
+          "sortDate": "2025-03-04"
+        },
+        {
+          "id": "doomsday",
+          "date": "Dec 2026 · planned",
+          "title": "Avengers: Doomsday release planned",
+          "summary": "A major MCU crossover is scheduled for December 2026.",
           "icon": "✦",
-          "summary": "Disney completes its acquisition of major 21st Century Fox assets, bringing key Marvel screen franchises into the group."
+          "sortDate": "2026-12-16",
+          "source": "https://www.disneyplus.com/en-gb/explore/articles/avengers-doomsday"
         }
       ],
       "branches": [
         {
           "id": "rights",
-          "anchor": 3,
+          "label": "FILM RIGHTS & PARTNERS",
+          "side": "above",
+          "events": [
+            {
+              "id": "foxrights",
+              "date": "1990s",
+              "title": "Separate character rights",
+              "summary": "Marvel screen characters are licensed to multiple studios.",
+              "icon": "X",
+              "sortDate": "1997-01-01"
+            },
+            {
+              "id": "sonyrights",
+              "date": "1999",
+              "title": "Sony's Spider-Man rights",
+              "summary": "Sony secures Spider-Man film rights.",
+              "icon": "🕸",
+              "sortDate": "1999-01-01"
+            },
+            {
+              "id": "sonydeal",
+              "date": "2015",
+              "title": "Shared Spider-Man agreement",
+              "summary": "Sony and Marvel collaborate on Spider-Man film appearances.",
+              "icon": "🕸",
+              "sortDate": "2015-03-01"
+            },
+            {
+              "id": "foxasset",
+              "date": "2019",
+              "title": "Fox film assets join Disney",
+              "summary": "Fox entertainment assets transfer to Disney.",
+              "icon": "X",
+              "sortDate": "2019-04-01"
+            }
+          ],
+          "rejoins": [
+            {
+              "fromId": "foxasset",
+              "toId": "foxclose",
+              "label": "Fox rights reconnect",
+              "description": "A corporate ownership reconnection, not an in-universe crossover."
+            }
+          ]
+        },
+        {
+          "id": "tv",
+          "label": "MARVEL TELEVISION",
           "side": "below",
-          "date": "1990s–2000s",
-          "title": "Film rights licensed",
-          "label": "Other studios",
-          "icon": "↗",
-          "summary": "Marvel characters are adapted by different film studios, creating separate continuities and complicated rights arrangements."
+          "events": [
+            {
+              "id": "shieldseries",
+              "date": "2013",
+              "title": "Agents of S.H.I.E.L.D.",
+              "summary": "The ABC Marvel Television series launches.",
+              "icon": "▣",
+              "sortDate": "2013-09-01"
+            },
+            {
+              "id": "netflixdaredevil",
+              "date": "2015",
+              "title": "Daredevil on Netflix",
+              "summary": "A new street-level live-action Marvel TV strand begins.",
+              "icon": "⚖",
+              "sortDate": "2015-04-01"
+            },
+            {
+              "id": "disneyplus",
+              "date": "2021",
+              "title": "Original Disney+ series",
+              "summary": "New Marvel Studios streaming series become central to the MCU.",
+              "icon": "◈",
+              "sortDate": "2021-03-01"
+            }
+          ],
+          "rejoins": [
+            {
+              "fromId": "disneyplus",
+              "toId": "wanda",
+              "label": "Streaming expansion",
+              "description": "Disney+ series become central to MCU storytelling."
+            }
+          ]
         }
       ]
     }
