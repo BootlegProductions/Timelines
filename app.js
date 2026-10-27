@@ -15,9 +15,102 @@ function filterCards(){app.querySelectorAll(".collection").forEach(x=>{x.hidden=
 const mobile=()=>matchMedia("(max-width:680px)").matches;
 function layout(){return state.layout==="auto"?(mobile()?"vertical":"horizontal"):state.layout}
 function pageMode(){const token=location.hash.split("/")[2];return store.marvel[token]?token:"release"}
-function renderTimeline(){state.mode=pageMode();state.selected=null;const mode=store.marvel[state.mode];app.innerHTML=header()+'<main id="main"><section class="detail-head wrap"><div class="crumb"><a href="#/">Discover</a> › Marvel › '+esc(mode.label)+'</div><div class="detail-title"><div><div class="kicker" style="margin-top:27px">Collection 01 / Films & television</div><h1>Marvel Timeline<span style="color:var(--green)">.</span></h1><p>'+esc(mode.caption)+'</p></div><div class="counter">01 / 03</div></div></section><section class="toolbar"><div class="wrap toolbar-inner"><div class="tabs">'+Object.entries(store.marvel).map(([key,item])=>'<button class="'+(state.mode===key?'active':'')+'" data-mode="'+key+'">'+esc(item.label)+'</button>').join("")+'</div><div class="layout-switch"><span class="layout-label">LAYOUT</span>'+["auto","horizontal","vertical"].map(x=>'<button class="'+(state.layout===x?'active':'')+'" data-layout="'+x+'">'+(x==="auto"?"Auto":x==="horizontal"?"↔ Horizontal":"↕ Vertical")+'</button>').join("")+'</div></div></section><section class="timeline-shell"><div class="frame-top"><span>◉ &nbsp; '+esc(mode.events[0].date)+' — '+esc(mode.events[mode.events.length-1].date)+'</span><span class="hint">DRAG / SCROLL TO EXPLORE · SELECT A CIRCLE FOR DETAILS</span></div><div id="stage-scroller" class="stage-scroller"><div id="timeline-stage" class="timeline-stage"></div></div><div class="frame-bottom"><span>SELECT ANY EVENT TO EXPLORE ITS STORY</span><div class="nudge"><button data-pan="-1" aria-label="Scroll backward">←</button><button data-pan="1" aria-label="Scroll forward">→</button></div></div></section><div class="wrap branch-options"><label><input type="checkbox" id="branches-toggle" '+(state.branches?'checked':'')+'> Show related branches and alternate continuities</label><span class="disclaimer">Prototype content is illustrative. Future entries will support image credits, citations and sources.</span></div></main>'+footer();app.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>{location.hash="#/marvel/"+b.dataset.mode}));app.querySelectorAll("[data-layout]").forEach(b=>b.addEventListener("click",()=>{state.layout=b.dataset.layout;renderTimeline()}));app.querySelector("#branches-toggle").addEventListener("change",e=>{state.branches=e.target.checked;draw()});app.querySelectorAll("[data-pan]").forEach(b=>b.addEventListener("click",()=>{let x=document.querySelector("#stage-scroller");if(layout()==="vertical")window.scrollBy({top:300*Number(b.dataset.pan),behavior:"smooth"});else x.scrollBy({left:420*Number(b.dataset.pan),behavior:"smooth"})}));const x=app.querySelector("#stage-scroller");let down=false,startX=0,scrollLeft=0;x.addEventListener("pointerdown",e=>{if(layout()==="vertical"||e.target.closest("button"))return;down=true;startX=e.clientX;scrollLeft=x.scrollLeft});x.addEventListener("pointermove",e=>{if(!down)return;if(Math.abs(e.clientX-startX)>4){x.classList.add("dragging");x.scrollLeft=scrollLeft-(e.clientX-startX)}});["pointerup","pointercancel","pointerleave"].forEach(ev=>x.addEventListener(ev,()=>{down=false;setTimeout(()=>x.classList.remove("dragging"),60)}));draw()}
-function makeNode(item,x,y,secondary,origin){const btn=document.createElement("button");btn.type="button";btn.className="node"+(secondary?" secondary":"");btn.style.left=x+"px";btn.style.top=y+"px";btn.innerHTML=(origin?'<span class="origin">ORIGIN POINT</span>':"")+'<span class="circle">'+esc(item.icon)+'</span><span class="date">'+esc(item.date)+'</span><span class="name">'+esc(item.title)+'</span>';btn.setAttribute("aria-label",item.title+" — "+item.date+". More details");btn.addEventListener("click",()=>openEvent(item,secondary));return btn}
-function draw(){const stage=document.querySelector("#timeline-stage");if(!stage)return;const vertical=layout()==="vertical";const mode=store.marvel[state.mode];const events=mode.events;const branches=state.branches?mode.branches:[];const scroller=document.querySelector("#stage-scroller");scroller.classList.toggle("vertical",vertical);const step=vertical?(branches.length?288:204):245;const width=vertical?Math.max(320,document.documentElement.clientWidth):Math.max(window.innerWidth,220+events.length*step);const height=vertical?150+events.length*step:590;stage.style.width=vertical?"100%":width+"px";stage.style.height=height+"px";const actualWidth=vertical?stage.clientWidth:width;const mainX=vertical?Math.min(100,Math.round(actualWidth*.25)):0;const yMain=vertical?0:278;const xOf=i=>vertical?mainX:155+i*step;const yOf=i=>vertical?140+i*step:yMain;const path=[];if(vertical){path.push('<path d="M'+mainX+' 70 V'+(height-95)+'"/>')}else{path.push('<path d="M0 '+(yMain+36)+' H'+width+'"/>')}const positioned=[];events.forEach((item,i)=>positioned.push({item,x:xOf(i),y:vertical?yOf(i)-34:yOf(i)-34,secondary:false,origin:i===0}));const labelItems=[];branches.forEach((b,k)=>{const anchor=b.anchor;const x=vertical?Math.min(actualWidth-67,mainX+Math.max(130,actualWidth*.4)):xOf(anchor)+(k%2===0?110:135);const y=vertical?yOf(anchor)+132:(b.side==="above"?75:420);const ax=xOf(anchor),ay=yOf(anchor)+36;const bx=x,by=y+37;if(vertical){path.push('<path class="branch" d="M'+ax+' '+ay+' H'+bx+' V'+by+'"/>')}else{path.push('<path class="branch" d="M'+ax+' '+ay+' V'+by+' H'+bx+'"/>')}positioned.push({item:b,x,y,secondary:true,origin:false});labelItems.push({text:b.label,x,y:vertical?y+155:b.side==="above"?y-29:y+151})});stage.innerHTML='<svg class="timeline-lines" viewBox="0 0 '+actualWidth+' '+height+'" preserveAspectRatio="none" aria-hidden="true">'+path.join("")+'</svg>';positioned.forEach(p=>stage.appendChild(makeNode(p.item,p.x,p.y,p.secondary,p.origin)));labelItems.forEach(b=>{const span=document.createElement("span");span.className="branch-label";span.style.left=b.x+"px";span.style.top=b.y+"px";span.textContent=b.text;stage.appendChild(span)});if(vertical){stage.style.minHeight=height+"px"}}
+function renderTimeline(){state.mode=pageMode();state.selected=null;const mode=store.marvel[state.mode];app.innerHTML=header()+'<main id="main"><section class="detail-head wrap"><div class="crumb"><a href="#/">Discover</a> › Marvel › '+esc(mode.label)+'</div><div class="detail-title"><div><div class="kicker" style="margin-top:27px">Collection 01 / Films & television</div><h1>Marvel Timeline<span style="color:var(--green)">.</span></h1><p>'+esc(mode.caption)+'</p></div><div class="counter">01 / 03</div></div></section><section class="toolbar"><div class="wrap toolbar-inner"><div class="tabs">'+Object.entries(store.marvel).map(([key,item])=>'<button class="'+(state.mode===key?'active':'')+'" data-mode="'+key+'">'+esc(item.label)+'</button>').join("")+'</div><div class="layout-switch"><span class="layout-label">LAYOUT</span>'+["auto","horizontal","vertical"].map(x=>'<button class="'+(state.layout===x?'active':'')+'" data-layout="'+x+'">'+(x==="auto"?"Auto":x==="horizontal"?"↔ Horizontal":"↕ Vertical")+'</button>').join("")+'</div></div></section><section class="timeline-shell" aria-label="Interactive Marvel timeline map"><div class="frame-top"><span>◉ &nbsp; '+(state.mode==="release"?"2000":esc(mode.events[0].date))+' — '+esc(mode.events[mode.events.length-1].date)+'</span><span class="hint">SWIPE OR DRAG IN ANY DIRECTION · TAP CIRCLES FOR DETAILS</span></div><div id="stage-scroller" class="stage-scroller" tabindex="0" role="region" aria-label="Timeline map. Swipe or scroll to visit events before or after the origin."><div id="timeline-stage" class="timeline-stage"></div></div><div class="frame-bottom"><span>← EARLIER RELEASES &nbsp; · &nbsp; LATER RELEASES →</span><button type="button" class="reset-origin" data-reset-origin>◎ Return to origin</button><div class="nudge"><button data-pan="-1" aria-label="Scroll backward">←</button><button data-pan="1" aria-label="Scroll forward">→</button></div></div></section><div class="wrap branch-options"><label><input type="checkbox" id="branches-toggle" '+(state.branches?'checked':'')+'> Show related branches and alternate continuities</label><span class="disclaimer">Prototype content is illustrative. Future entries will support image credits, citations and sources.</span></div></main>'+footer();app.querySelectorAll("[data-mode]").forEach(b=>b.addEventListener("click",()=>{location.hash="#/marvel/"+b.dataset.mode}));app.querySelectorAll("[data-layout]").forEach(b=>b.addEventListener("click",()=>{state.layout=b.dataset.layout;renderTimeline()}));app.querySelector("#branches-toggle").addEventListener("change",e=>{state.branches=e.target.checked;draw()});app.querySelectorAll("[data-pan]").forEach(b=>b.addEventListener("click",()=>{let x=document.querySelector("#stage-scroller");if(layout()==="vertical")x.scrollBy({top:320*Number(b.dataset.pan),behavior:"smooth"});else x.scrollBy({left:420*Number(b.dataset.pan),behavior:"smooth"})}));const x=app.querySelector("#stage-scroller");
+  let dragging=false,startX=0,startY=0,left=0,top=0,moved=false;
+  x.addEventListener("pointerdown",e=>{
+    if(e.pointerType==="touch"||e.target.closest("button"))return;
+    dragging=true;moved=false;startX=e.clientX;startY=e.clientY;
+    left=x.scrollLeft;top=x.scrollTop;
+  });
+  x.addEventListener("pointermove",e=>{
+    if(!dragging)return;
+    const dx=e.clientX-startX,dy=e.clientY-startY;
+    if(Math.abs(dx)+Math.abs(dy)<5)return;
+    moved=true;x.classList.add("dragging");
+    x.scrollLeft=left-dx;x.scrollTop=top-dy;
+  });
+  ["pointerup","pointercancel","pointerleave"].forEach(ev=>x.addEventListener(ev,()=>{
+    dragging=false;setTimeout(()=>{x.classList.remove("dragging");moved=false},80);
+  }));
+  x.addEventListener("click",e=>{if(moved){e.preventDefault();e.stopPropagation()}},true);
+  app.querySelector("[data-reset-origin]").addEventListener("click",()=>draw(true));
+  draw(true)}
+function makeNode(item,x,centre,secondary,origin){
+  const btn=document.createElement("button");
+  btn.type="button";
+  btn.className="node"+(secondary?" secondary":"")+(origin?" is-origin":"");
+  btn.style.left=x+"px";
+  btn.style.top=(centre-38)+"px";
+  btn.innerHTML=(origin?'<span class="origin">MCU ORIGIN · 2008</span>':"")+
+    '<span class="circle">'+esc(item.icon)+'</span>'+
+    '<span class="node-caption"><span class="date">'+esc(item.date)+'</span><span class="name">'+esc(item.title)+'</span></span>';
+  btn.setAttribute("aria-label",item.title+", "+item.date+". Open details");
+  btn.addEventListener("click",()=>openEvent(item,secondary));
+  return btn;
+}
+/* The focal origin need not be the earliest date. Every track uses one shared
+   chronological axis, so pre-origin film releases remain behind the origin. */
+function draw(resetPosition=false){
+  const stage=document.querySelector("#timeline-stage");
+  const scroller=document.querySelector("#stage-scroller");
+  if(!stage||!scroller)return;
+  const vertical=layout()==="vertical", mode=store.marvel[state.mode];
+  const main=mode.events, branches=state.branches?mode.branches:[];
+  const getYear=(o,fallback)=>Number.isFinite(Number(o.year))?Number(o.year):(parseInt(String(o.date),10)||fallback);
+  const originYear=getYear(main[0],2008);
+  const groups=branches.map((b,i)=>({
+    ...b,
+    items:(b.events&&b.events.length?b.events:[b]).map(e=>({...e,year:getYear(e,getYear(main[b.anchor||0],originYear))})),
+    side:b.side||(i%2===0?"above":"below")
+  }));
+  const years=[...new Set(main.map((e,i)=>getYear(e,originYear+i)).concat(groups.flatMap(b=>b.items.map(e=>e.year))))].sort((a,b)=>a-b);
+  const yearPosition=new Map(years.map((year,index)=>[year,index]));
+  const stride=vertical?214:238, lead=vertical?200:190, tail=vertical?240:225;
+  const axis=year=>lead+yearPosition.get(year)*stride;
+  const originAxis=axis(originYear);
+  const width=vertical?980:lead+(years.length-1)*stride+tail;
+  const height=vertical?lead+(years.length-1)*stride+tail:690;
+  const primary=vertical?480:300;
+  const foxLane=vertical?795:112;
+  const sonyLane=vertical?165:505;
+  stage.style.width=width+"px";
+  stage.style.height=height+"px";
+  stage.style.minWidth="0";
+  scroller.classList.toggle("vertical",vertical);
+  const x=(year,lane)=>vertical?lane:axis(year),y=(year,lane)=>vertical?axis(year):lane;
+  const path=[];
+  const endAxis=axis(getYear(main[main.length-1],originYear));
+  if(vertical)path.push('<path d="M'+primary+" "+originAxis+" V"+(endAxis+35)+'"/>');
+  else path.push('<path d="M'+originAxis+" "+primary+" H"+(endAxis+55)+'"/>');
+  const nodes=main.map((e,i)=>({event:e,x:x(getYear(e,originYear+i),primary),y:y(getYear(e,originYear+i),primary),secondary:false,origin:i===0}));
+  const labels=[];
+  groups.forEach((b,i)=>{
+    const lane=i%2===0?foxLane:sonyLane;
+    const yearsOnTrack=b.items.map(e=>e.year);
+    const lo=Math.min(originYear,...yearsOnTrack),hi=Math.max(originYear,...yearsOnTrack);
+    const first=axis(lo),last=axis(hi);
+    const stroke=b.side==="above"?"fox":"sony";
+    if(vertical){
+      path.push('<path class="branch '+stroke+'" d="M'+primary+" "+originAxis+" H"+lane+'"/>');
+      path.push('<path class="branch '+stroke+'" d="M'+lane+" "+first+" V"+last+'"/>');
+    }else{
+      path.push('<path class="branch '+stroke+'" d="M'+originAxis+" "+primary+" V"+lane+'"/>');
+      path.push('<path class="branch '+stroke+'" d="M'+first+" "+lane+" H"+last+'"/>');
+    }
+    b.items.forEach(e=>nodes.push({event:e,x:x(e.year,lane),y:y(e.year,lane),secondary:true,origin:false}));
+    labels.push({text:b.label,x:vertical?lane:Math.max(100,first),y:vertical?Math.max(40,first-85):lane-82});
+  });
+  stage.innerHTML='<svg class="timeline-lines" viewBox="0 0 '+width+" "+height+'" preserveAspectRatio="none" aria-hidden="true">'+path.join("")+'</svg>';
+  labels.forEach(b=>{const el=document.createElement("span");el.className="branch-label";el.style.left=b.x+"px";el.style.top=b.y+"px";el.textContent=b.text;stage.appendChild(el)});
+  nodes.forEach(p=>stage.appendChild(makeNode(p.event,p.x,p.y,p.secondary,p.origin)));
+  if(resetPosition){
+    requestAnimationFrame(()=>{
+      if(!scroller.isConnected)return;
+      scroller.scrollLeft=vertical?Math.max(0,primary-scroller.clientWidth*.45):Math.max(0,originAxis-scroller.clientWidth*.24);
+      scroller.scrollTop=vertical?Math.max(0,originAxis-175):0;
+    });
+  }
+}
 function openEvent(item,branch){document.querySelectorAll(".panel-backdrop,.event-panel").forEach(x=>x.remove());const back=document.createElement("div");back.className="panel-backdrop";const panel=document.createElement("aside");panel.className="event-panel";panel.setAttribute("role","dialog");panel.setAttribute("aria-modal","true");panel.setAttribute("aria-label",item.title);panel.innerHTML='<div class="panel-header"><span class="panel-eyebrow">'+(branch?"RELATED BRANCH":"TIMELINE EVENT")+'</span><button class="close-panel" aria-label="Close details">×</button></div><div class="panel-icon">'+esc(item.icon)+'</div><div class="panel-date">'+esc(item.date)+'</div><h2>'+esc(item.title)+'</h2><p>'+esc(item.summary)+'</p><div class="panel-footer">This entry is part of the first Timelines prototype. Artwork and sourced details can be added as the library grows.</div>';document.body.append(back,panel);const close=()=>{back.remove();panel.remove();document.removeEventListener("keydown",onKey)};const onKey=e=>{if(e.key==="Escape")close()};back.addEventListener("click",close);panel.querySelector("button").addEventListener("click",close);document.addEventListener("keydown",onKey);panel.querySelector("button").focus()}
 function route(){if(location.hash.startsWith("#/marvel/"))renderTimeline();else renderHome();window.scrollTo(0,0)}
 window.addEventListener("hashchange",route);let resize;window.addEventListener("resize",()=>{clearTimeout(resize);resize=setTimeout(()=>{if(document.querySelector("#timeline-stage")&&state.layout==="auto")draw()},140)});route();

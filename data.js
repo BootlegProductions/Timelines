@@ -18,9 +18,21 @@ window.TIMELINES_DATA = {
       {id:"endgame",date:"2019",title:"Avengers: Endgame",icon:"✦",summary:"The Infinity Saga reaches its landmark conclusion."},
       {id:"deadpool",date:"2024",title:"Deadpool & Wolverine",icon:"✕",summary:"Characters from different Marvel film continuities meet in a multiverse story."}
     ],branches:[
-      {id:"fox",anchor:0,side:"above",date:"2000",title:"X-Men",label:"Fox X-Men films",icon:"X",summary:"20th Century Fox's X-Men continuity began before the MCU; shown here as a separate film series."},
-      {id:"sony",anchor:1,side:"below",date:"2002",title:"Spider-Man",label:"Sony Spider-Man films",icon:"🕸",summary:"Sam Raimi's Spider-Man trilogy introduced a separate continuity outside the original MCU."},
-      {id:"logan",anchor:4,side:"above",date:"2017",title:"Logan",label:"X-Men continuation",icon:"⌁",summary:"A later, darker story associated with Fox's X-Men film continuity."}
+      {id:"fox",label:"Fox X-Men films",side:"above",events:[
+        {id:"xmen",year:2000,date:"2000",title:"X-Men",icon:"X",summary:"Fox's first X-Men film opened a separate Marvel screen continuity."},
+        {id:"x2",year:2003,date:"2003",title:"X2",icon:"X",summary:"The sequel brings Wolverine, Professor X and the X-Men back together."},
+        {id:"laststand",year:2006,date:"2006",title:"The Last Stand",icon:"X",summary:"The third X-Men film concludes the original trilogy."},
+        {id:"firstclass",year:2011,date:"2011",title:"First Class",icon:"✕",summary:"An X-Men prequel released after the original trilogy; its release date remains 2011 in this view."},
+        {id:"dofp",year:2014,date:"2014",title:"Days of Future Past",icon:"◈",summary:"Past and future collide as the franchise revisits earlier eras."},
+        {id:"logan",year:2017,date:"2017",title:"Logan",icon:"⌁",summary:"A later release in Fox's Wolverine film series."}
+      ]},
+      {id:"sony",label:"Sony Spider-Man films",side:"below",events:[
+        {id:"spiderman",year:2002,date:"2002",title:"Spider-Man",icon:"🕸",summary:"Sam Raimi's Spider-Man arrives six years before the MCU's Iron Man."},
+        {id:"spiderman2",year:2004,date:"2004",title:"Spider-Man 2",icon:"🕸",summary:"Peter Parker returns opposite Doctor Octopus."},
+        {id:"spiderman3",year:2007,date:"2007",title:"Spider-Man 3",icon:"🕸",summary:"The third film in Raimi's original Spider-Man trilogy."},
+        {id:"amazing",year:2012,date:"2012",title:"The Amazing Spider-Man",icon:"🕸",summary:"A new Spider-Man film continuity begins."},
+        {id:"spiderverse",year:2018,date:"2018",title:"Into the Spider-Verse",icon:"✳",summary:"An animated story introduces Miles Morales and a multiverse of Spider-People."}
+      ]}
     ]},
     universe: {label:"In-universe",caption:"Selected events in fictional story order. Dates are approximate within MCU continuity.",events:[
       {id:"first",date:"1943–45",title:"The First Avenger",icon:"★",summary:"Steve Rogers becomes Captain America during the Second World War."},
