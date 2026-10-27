@@ -1,4 +1,4 @@
-/* Curated Marvel timelines. In-universe story dates are approximate. */
+/* Curated data for Timelines. In-universe dates are editorial approximations. */
 window.TIMELINES_DATA = {
   "collections": [
     {
@@ -602,12 +602,13 @@ window.TIMELINES_DATA = {
         },
         {
           "id": "bornagain2",
-          "released": "2026-03-24",
+          "released": "2026-03-25",
           "date": "2026",
           "title": "Daredevil: Born Again — Season 2",
           "icon": "⚖",
           "summary": "The next chapter of Matt Murdock's story.",
-          "type": "series"
+          "type": "series",
+          "source": "https://www.disneyplus.com/en-gb/explore/articles/daredevil-born-again-season-2"
         },
         {
           "id": "brandnewday",
@@ -632,7 +633,7 @@ window.TIMELINES_DATA = {
         {
           "id": "doomsday",
           "released": "2026-12-16",
-          "date": "16 Dec 2026 · UK",
+          "date": "Dec 2026 · UK 16 / US 18",
           "title": "Avengers: Doomsday",
           "icon": "✦",
           "type": "film",
