@@ -236,3 +236,60 @@
 
 /* Keep the connector arrowheads visible above the shared SVG path reset. */
 .timeline-lines defs marker path{fill:#6e9954!important;stroke:none!important}
+
+
+/* v0.4 Marvel collection theme. Default/green styling is the reusable base. */
+body.theme-marvel{
+  --bg:#fdf8f8;--ink:#39252a;--muted:#826970;--green:#d34455;
+  --green-dark:#b12539;--border:#efd4d9;--soft:#fce6e9;
+  background:#fdf8f8;
+}
+.theme-marvel .header{background:#fffbfb;border-bottom-color:#eed4d8}
+.theme-marvel .brand svg,.theme-marvel .brand b,.theme-marvel .detail-title h1 span{color:#c83149!important}
+.theme-marvel .detail-head{background:linear-gradient(110deg,#fffafa,#fff0f2)}
+.theme-marvel .toolbar,.theme-marvel .map-legend{background:#fffafa;border-color:#f2d9dd}
+.theme-marvel .toolbar .tabs button.active,.theme-marvel .layout-switch button.active{background:#f9e0e4;color:#9c2339}
+.theme-marvel .timeline-shell{background:#fffafa;border-color:#ecc8cd;box-shadow:0 14px 45px #982c3812}
+.theme-marvel .timeline-shell .frame-top,.theme-marvel .timeline-shell .frame-bottom{background:#fae9ec;border-color:#efd4d8;color:#a25b66}
+.theme-marvel .stage-scroller,.theme-marvel .stage-scroller.vertical{background:#fffafa}
+.theme-marvel .stage-scroller .timeline-stage{background-image:radial-gradient(#efdce0 1.1px,transparent 1.1px)}
+.theme-marvel .timeline-lines path.main-track{stroke:#92263b;stroke-width:11}
+.theme-marvel .timeline-lines path.fox-track{stroke:#dd818e}
+.theme-marvel .timeline-lines path.sony-track{stroke:#ac7787}
+.theme-marvel .timeline-lines path.rejoin-track{stroke:#d04455}
+.theme-marvel .timeline-lines path.branch-arrow{stroke:#bd6471}
+.theme-marvel .timeline-lines defs marker path{fill:#ca364a!important}
+.theme-marvel .main-label{background:#92263b}
+.theme-marvel .branch-label{background:#fce8eb;color:#a94c5a;border-color:#ecc8cd}
+.theme-marvel .node .circle,.theme-marvel .node.secondary .circle{
+  background:radial-gradient(circle at 33% 24%,#ec929a,#c93147 57%,#902239);
+  outline-color:#cf4c5e;box-shadow:0 7px 20px #7f1c2e30;color:#fff
+}
+.theme-marvel .node.type-series .circle{background:radial-gradient(circle at 33% 24%,#f6b7b4,#d76774 57%,#993146)}
+.theme-marvel .node.is-origin .circle{outline-color:#bd223b;box-shadow:0 0 0 7px #f8c9d178,0 10px 25px #922c3d32}
+.theme-marvel .node.is-crossover .circle{outline-color:#a1223b;box-shadow:0 0 0 6px #edb4bd7a}
+.theme-marvel .node-caption{border-color:#f0cdd2;background:#fffafa;color:#482a34}
+.theme-marvel .node .date,.theme-marvel .panel-date,.theme-marvel .panel-eyebrow{color:#b72f45}
+.theme-marvel .node .origin{background:#fde7eb;border-color:#edbec5;color:#a32539}
+.theme-marvel .node.is-crossover .node-caption{background:#fff0f2;border-color:#e6a7af}
+.theme-marvel .panel-icon{background:radial-gradient(circle at 45% 25%,#f39eab,#c72a43);color:white}
+.theme-marvel .event-panel{border-color:#eed1d6}
+.theme-marvel .event-source{color:#b22a3f}
+.theme-marvel .reset-origin{background:#fffbfb;border-color:#efbdc6;color:#a4263c}
+.theme-marvel .reset-origin:hover{background:#fce7e9}
+.theme-marvel .map-legend .main-swatch{border-color:#92263b}
+.theme-marvel .map-legend .fox-swatch{border-color:#dd818e}
+.theme-marvel .map-legend .sony-swatch{border-color:#ac7787}
+.theme-marvel .map-legend .join-swatch{border-color:#d04455}
+.theme-marvel .branch-options input{accent-color:#c62e46}
+.theme-marvel .footer{background:#411c29}
+.release-type-tools{display:flex;align-items:center;gap:6px;flex-wrap:wrap;flex:1 1 auto}
+.release-type-tools .filter-label{font-size:10px;font-weight:900;letter-spacing:.12em;color:var(--muted);margin-right:6px}
+.release-type{background:#fff;border:1px solid var(--border);border-radius:23px;padding:8px 12px;font-size:11px;color:var(--muted);font-weight:800}
+.release-type.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.item-kind{font-size:9px;font-weight:900;letter-spacing:.1em;color:#b45364}
+.node.is-upcoming .node-caption{border-style:dashed;border-width:2px}
+.event-source{display:inline-block;padding:9px 12px;border:1px solid var(--border);border-radius:6px;color:var(--green-dark);text-decoration:none;font-size:12px;font-weight:800}
+.event-source:hover{text-decoration:underline}
+.empty-timeline{padding:75px 20px;text-align:center;color:var(--muted);font-weight:700}
+@media(max-width:680px){.release-type-tools{width:100%;margin-bottom:8px}}
