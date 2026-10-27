@@ -166,7 +166,7 @@ function draw(resetPosition=false){
   });
   if(resetPosition)requestAnimationFrame(()=>{
     if(!scroller.isConnected)return;
-    scroller.scrollLeft=vertical?Math.max(0,spine-scroller.clientWidth*(narrow?.29:.5)):Math.max(0,originAxis-scroller.clientWidth*.24);
+    scroller.scrollLeft=vertical?(narrow?Math.max(0,(scroller.scrollWidth-scroller.clientWidth)*.38):Math.max(0,spine-scroller.clientWidth*.5)):Math.max(0,originAxis-scroller.clientWidth*.24);
     scroller.scrollTop=vertical?Math.max(0,originAxis-145):0;
   });
 }

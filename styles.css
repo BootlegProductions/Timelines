@@ -233,3 +233,6 @@
   .branch-label{font-size:8px;padding:5px 7px;letter-spacing:.04em}
   .main-label{font-size:9px;padding:6px 9px;letter-spacing:.02em}
 }
+
+/* Keep the connector arrowheads visible above the shared SVG path reset. */
+.timeline-lines defs marker path{fill:#6e9954!important;stroke:none!important}
