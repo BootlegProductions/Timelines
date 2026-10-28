@@ -1,4 +1,4 @@
-/* Expanded Timelines catalog — sourced starter collections. */
+/* Timelines v0.5: expandable collections and editorial starter entries. */
 window.TIMELINES_DATA = {
   "collections": [
     {
@@ -1563,7 +1563,7 @@ window.TIMELINES_DATA = {
           "date": "13.8 billion years ago",
           "title": "The Big Bang",
           "icon": "✦",
-          "summary": "The observable universe begins expanding from an extremely hot, dense early state. We do not yet know what, if anything, preceded this phase."
+          "summary": "Around 13.8 billion years ago, the observable universe began expanding from an extremely hot, dense early state. As it expanded, it cooled enough for particles, atomic nuclei and eventually atoms to form. The Big Bang model describes that early expansion; it does not establish what, if anything, came before it."
         },
         {
           "id": "atoms",
@@ -1773,7 +1773,7 @@ window.TIMELINES_DATA = {
           "date": "252–201 Ma",
           "title": "Triassic Period",
           "icon": "◆",
-          "summary": "Reptile lineages diversify on the supercontinent Pangaea, and the first dinosaurs emerge."
+          "summary": "The Triassic followed the catastrophic end-Permian extinction. Much of the land lay within the supercontinent Pangaea, and reptiles diversified into many forms. The first dinosaurs appeared in the Late Triassic, but they were not yet the dominant animals everywhere."
         },
         {
           "id": "firstdinos",
@@ -1911,7 +1911,7 @@ window.TIMELINES_DATA = {
           "date": "28 June 1914",
           "title": "Assassination in Sarajevo",
           "icon": "✢",
-          "summary": "Archduke Franz Ferdinand and his wife Sophie are assassinated, precipitating a diplomatic crisis."
+          "summary": "On 28 June 1914, Gavrilo Princip assassinated Archduke Franz Ferdinand and his wife Sophie in Sarajevo. The attack triggered a diplomatic crisis between Austria-Hungary and Serbia. Alliances, mobilisations and decisions by European governments then escalated that crisis into a wider war."
         },
         {
           "id": "war",
@@ -2025,7 +2025,7 @@ window.TIMELINES_DATA = {
           "date": "1 September 1939",
           "title": "Invasion of Poland",
           "icon": "⚔",
-          "summary": "Germany invades Poland, beginning the war in Europe."
+          "summary": "On 1 September 1939, Nazi Germany invaded Poland. The offensive followed years of territorial expansion and threats against neighbouring states, and was coordinated with the secret terms of the German-Soviet pact. Britain and France declared war on Germany two days later."
         },
         {
           "id": "britain",
@@ -2291,7 +2291,7 @@ window.TIMELINES_DATA = {
           "date": "23 October 2077",
           "title": "The Great War",
           "icon": "☢",
-          "summary": "Nuclear exchanges devastate the United States and much of the world in a matter of hours."
+          "summary": "On 23 October 2077, nuclear war devastates the United States and much of the wider world. The bombardment lasts only a short time, but its consequences define the wasteland for centuries. Many survivors take shelter in Vault-Tec vaults, some of which conceal experiments rather than straightforward public protection."
         },
         {
           "id": "vault76",
@@ -2461,7 +2461,7 @@ window.TIMELINES_DATA = {
           "date": "18 November 2011",
           "title": "Java full release",
           "icon": "◆",
-          "summary": "The original PC version reaches its official 1.0 release at MINECON."
+          "summary": "After years of public Classic, Alpha and Beta builds, Minecraft officially launches its full Java Edition at MINECON in November 2011. The release formalises a game already shaped by an active creative community, with survival, building and exploration at its core. Later updates turn that foundation into an ever-evolving sandbox."
         },
         {
           "id": "redstone",
@@ -2903,7 +2903,7 @@ window.TIMELINES_DATA = {
           "date": "September 1998",
           "title": "Raccoon City outbreak",
           "icon": "☣",
-          "summary": "The t-virus spreads throughout the city, overwhelming hospitals, police and emergency systems."
+          "summary": "During September 1998, a viral outbreak overwhelms Raccoon City and its emergency services. Ordinary residents, police officers and visiting survivors face infected creatures while evidence points towards Umbrella's biological-weapons research. Several Resident Evil games depict overlapping parts of the crisis from different perspectives."
         },
         {
           "id": "nemesis",
