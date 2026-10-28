@@ -308,3 +308,89 @@ body.immersive-open{overflow:hidden}
 .timeline-shell.immersive .stage-scroller{flex:1 1 auto!important;height:auto!important;min-height:0;max-height:none!important;overflow:auto!important}
 .timeline-shell.immersive #close-immersive{display:inline-block!important}
 @media(max-width:680px){.frame-actions .hint{display:none}.timeline-shell.immersive .frame-top{padding-top:max(12px,env(safe-area-inset-top))}.timeline-shell.immersive .frame-bottom{padding-bottom:max(12px,env(safe-area-inset-bottom))}}
+
+
+/* v0.5: distinct collection library and dedicated category/subject pages */
+.section-page{min-height:75vh;padding:55px 0 95px}
+.section-title{font:clamp(55px,7vw,96px)/1.1 var(--serif);letter-spacing:-.045em;margin:18px 0 15px}
+.section-title span{color:var(--green)}
+.section-description{color:var(--muted);font-size:16px;line-height:1.8;max-width:710px}
+.section-return{margin-top:37px}
+.collection-hero{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:30px 0 46px}
+.collection-emblem{font:clamp(95px,13vw,180px)/1 var(--serif);color:var(--green);opacity:.28}
+.views-intro{margin-top:28px;font-size:11px;font-weight:900;letter-spacing:.14em;color:var(--green-dark)}
+.views-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.view-card{display:flex;flex-direction:column;align-items:flex-start;min-height:280px;padding:25px;border:1px solid var(--border);background:#ffffffa8;border-radius:13px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.view-card:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 12px 25px #202b2414}
+.view-number{font-size:10px;font-weight:900;letter-spacing:.1em;color:var(--muted)}
+.view-icon{margin-top:25px;font:44px var(--serif);color:var(--green)}
+.view-card h2{font:30px var(--serif);margin:14px 0 8px}
+.view-card p{color:var(--muted);line-height:1.65;font-size:12px;margin:0 0 20px}
+.view-cta{font-size:11px;font-weight:900;margin-top:auto;color:var(--green-dark)}
+.collection-minecraft{background:#e2edda}.collection-fallout{background:#deebdb}
+.collection-resident{background:#efe4e3}.collection-cosmos{background:#dfebf6}
+.collection-prehistoric{background:#edf0dd}.collection-archive{background:#efe9dc}
+.collection .art{font-size:90px}
+.event-art{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;pointer-events:none}
+.event-glyph{font:30px var(--serif);color:white}
+.panel-icon .event-art{width:148px;height:148px;box-shadow:0 12px 35px #3335}
+.panel-icon .event-glyph{font-size:80px}
+.timeline-stage .node.type-series .circle{outline-style:dashed}
+.node.type-series .item-kind{opacity:.9}
+.event-panel{z-index:240}.panel-backdrop{z-index:230}
+.frame-actions{display:flex;align-items:center;gap:9px}
+.frame-actions button{font-size:11px;font-weight:800;background:#fff;border:1px solid #c8d8c5;border-radius:7px;padding:9px 13px;color:#38573d;white-space:nowrap}
+.frame-actions button:hover{background:#f4f9f0}
+.frame-actions .immersive-close{display:none}
+.immersive-open{overflow:hidden!important}
+.timeline-shell.immersive{
+  position:fixed!important;inset:0!important;
+  margin:0!important;padding:0!important;
+  width:100vw!important;height:100vh!important;height:100dvh!important;
+  max-width:none!important;border-radius:0!important;
+  z-index:200!important;
+  display:flex!important;flex-direction:column!important;
+  overflow:hidden!important;box-shadow:none!important;
+}
+.timeline-shell.immersive .frame-top,
+.timeline-shell.immersive .map-legend,
+.timeline-shell.immersive .frame-bottom{flex:0 0 auto}
+.timeline-shell.immersive .stage-scroller,
+.timeline-shell.immersive .stage-scroller.vertical{
+  height:auto!important;max-height:none!important;
+  flex:1 1 auto;min-height:0;
+  overflow:auto!important;
+}
+.timeline-shell.immersive .frame-top{padding-top:max(12px,env(safe-area-inset-top))}
+.timeline-shell.immersive .frame-bottom{padding-bottom:max(12px,env(safe-area-inset-bottom))}
+.timeline-shell.immersive .immersive-close{display:inline-flex!important}
+.timeline-shell.immersive #expand-timeline{display:none}
+.theme-marvel .frame-actions button{color:#92263b;border-color:#e8b9c3;background:#fffafa}
+/* Subject palettes. Applied only within their respective collections. */
+body.theme-cosmos{--bg:#f0f4fc;--ink:#213456;--green:#4b77b4;--green-dark:#315889;--border:#d4dfef;--muted:#62718a}
+body.theme-prehistoric{--bg:#f5f5e9;--ink:#30432c;--green:#8c9a43;--green-dark:#66783e;--border:#dce2c5}
+body.theme-archive{--bg:#f8f4e9;--ink:#4a3b2d;--green:#977846;--green-dark:#806339;--border:#e5d8bb;--muted:#887965}
+body.theme-fallout{--bg:#eff6e9;--ink:#1d3424;--green:#64a039;--green-dark:#4b812e;--border:#c9dfbf;--muted:#5d7a5c}
+body.theme-minecraft{--bg:#f2f7ef;--ink:#293d2c;--green:#5a9947;--green-dark:#3e7934;--border:#cbe3c1}
+body.theme-resident{--bg:#faf2f1;--ink:#40292d;--green:#b4434b;--green-dark:#902e3e;--border:#e6c6cb;--muted:#86666e}
+.theme-cosmos .timeline-shell,.theme-prehistoric .timeline-shell,.theme-archive .timeline-shell,.theme-fallout .timeline-shell,.theme-minecraft .timeline-shell,.theme-resident .timeline-shell{border-color:var(--border)}
+.theme-cosmos .main-label,.theme-prehistoric .main-label,.theme-archive .main-label,.theme-fallout .main-label,.theme-minecraft .main-label,.theme-resident .main-label{background:var(--ink)}
+.theme-cosmos .node .circle,.theme-prehistoric .node .circle,.theme-archive .node .circle,.theme-fallout .node .circle,.theme-minecraft .node .circle,.theme-resident .node .circle{outline-color:var(--green)}
+@media(max-width:860px){.views-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){
+ .section-page{padding:35px 0 65px}
+ .section-title{font-size:58px}
+ .section-description{font-size:14px}
+ .collection-hero{padding:15px 0 28px;align-items:flex-start}
+ .collection-emblem{font-size:80px}
+ .views-grid{grid-template-columns:1fr}
+ .view-card{min-height:220px;padding:19px}
+ .view-icon{margin-top:15px}
+ .view-card h2{font-size:28px}
+ .frame-actions .hint{display:none}
+ .frame-actions button{font-size:10px;padding:7px 10px}
+ .timeline-shell.immersive .frame-top{padding:12px 10px}
+ .timeline-shell.immersive .map-legend{padding:8px 10px}
+ .timeline-shell.immersive .frame-bottom{padding:10px}
+ .timeline-shell.immersive .frame-bottom>span{display:none}
+}
