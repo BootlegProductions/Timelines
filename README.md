@@ -106,3 +106,41 @@ Useful starting sources:
 - https://fallout.bethesda.net/en-US/news/fallout25-presents-the-fallout-timeline
 - https://www.minecraft.net/en-us/updates/minecraft-updates-timeline-and-evolution
 - https://game.capcom.com/residentevil/en/
+
+
+## Version 0.5 — multi-collection library
+
+**The original green base template remains at `template.html`**, using the same `app.js` and `styles.css` as every collection. Do not fork or freeze the layout into separate files: improve these shared engine files for all collections; reserve `.theme-*` CSS for subject-specific appearance.
+
+### New navigation
+
+- `#/category/History` → Universe, Dinosaurs, World War I and World War II
+- `#/category/Games` → Fallout, Minecraft and Resident Evil
+- `#/collection/<slug>` → the subject's timeline-selector page
+- `#/t/<slug>/<view>` → an individual interactive timeline
+- Old `#/marvel/release` links still work.
+
+### Timeline controls
+
+On touch devices, double-tap an **empty spot in the timeline canvas** (not a node) to expand it to an immersive full-viewport overlay. A visible **Expand** button performs the same action and **Close** or the Escape key exits. Full-screen here means the app's viewport; mobile browsers may still show system browser bars. Drag or swipe within the enlarged viewer to explore time. By default timelines use horizontal scrolling on all screen sizes; vertical view remains an optional toggle. Closing the overlay returns to the page without navigating away.
+
+### Content structure
+
+Add a collection descriptor in `data.js` under `collections` with `slug`, `name`, `category`, `subtitle`, `icon`, `theme`, `blurb`, `available`. Add a matching `window.TIMELINES_DATA[slug]` object with named views; each view contains `label`, `caption`, optional `source`, `events`, `branches`. Events support `id`, `sortDate` or `released` (lexically sortable), `date` (display text), `title`, `summary`, `icon`, optional `image` (site-local assets), `source`, and `status`. Optional `branches[].rejoins` contains `fromId` and `toId` identifiers.
+
+When creating a new collection, preserve the event ordering and avoid equating story order with release order. Very long historical gaps use **equal visual event spacing**, not a physically scaled geological or cosmic time axis. Where dating is approximate, the label and descriptions should say so.
+
+### Original artwork
+
+The `assets/` folder now contains **14 original SVG emblems**, including stylised armour, shield, hammer, web, mutant emblem, vault wheel, grass block, biohazard, dinosaur, galaxy and historical helmet. The icon picker in `app.js` uses the event's subject/title to choose a graphic, with a fallback emblem when none is defined. These are original placeholders, not licensed movie posters. A site-local image can override this by providing an `image` field on an event. This keeps the site independent of expensive APIs and hotlinked imagery.
+
+### Starter collection references
+
+- Universe: [NASA universe overview](https://science.nasa.gov/universe/overview/)
+- Dinosaur stages: [US National Park Service geologic time scale](https://www.nps.gov/subjects/geology/time-scale.htm)
+- Fallout: [Bethesda timeline](https://fallout.bethesda.net/en-US/news/fallout25-presents-the-fallout-timeline)
+- Minecraft: [official Minecraft updates timeline](https://www.minecraft.net/en-us/updates/minecraft-updates-timeline-and-evolution), plus Java/Bedrock version history
+- Resident Evil: [Capcom franchise timeline](https://game.capcom.com/residentevil/en/news-1834.html)
+- World wars: [Imperial War Museums](https://www.iwm.org.uk/)
+
+These are **curated starting points**. Expand sources, regional perspectives, detailed chronology and image credits before treating the collection as exhaustive. Uncertain in-universe positions and some edition-specific update dates are editorial approximations.
