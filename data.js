@@ -1,4 +1,4 @@
-/* Timelines v0.5: expandable collections and editorial starter entries. */
+/* Timelines v0.5 — multiple subject timelines. Dates may be approximate; sources in individual views. */
 window.TIMELINES_DATA = {
   "collections": [
     {
@@ -3042,22 +3042,6 @@ window.TIMELINES_DATA = {
           "summary": "Leon Kennedy and Claire Redfield enter a city devastated by the t-virus."
         },
         {
-          "id": "destroyed",
-          "sortDate": "1998-10-01",
-          "date": "1 October 1998",
-          "title": "Raccoon City destroyed",
-          "icon": "☄",
-          "summary": "The US government destroys the city in an attempt to contain the biohazard."
-        },
-        {
-          "id": "veronica",
-          "sortDate": "1998-12-01",
-          "date": "December 1998",
-          "title": "Code: Veronica",
-          "icon": "✢",
-          "summary": "Claire's search for Chris leads to Rockfort Island and the Antarctic research base."
-        },
-        {
           "id": "survivors",
           "sortDate": "1998-09-30",
           "date": "Late September 1998",
@@ -3066,12 +3050,28 @@ window.TIMELINES_DATA = {
           "summary": "Resident Evil Outbreak depicts residents fighting to escape infected Raccoon City."
         },
         {
+          "id": "destroyed",
+          "sortDate": "1998-10-01",
+          "date": "1 October 1998",
+          "title": "Raccoon City destroyed",
+          "icon": "☄",
+          "summary": "The US government destroys the city in an attempt to contain the biohazard."
+        },
+        {
           "id": "aftermath",
           "sortDate": "1998-10-02",
           "date": "October 1998",
           "title": "Aftermath",
           "icon": "☄",
           "summary": "The destruction of Raccoon City leaves survivors and unanswered questions about Umbrella."
+        },
+        {
+          "id": "veronica",
+          "sortDate": "1998-12-01",
+          "date": "December 1998",
+          "title": "Code: Veronica",
+          "icon": "✢",
+          "summary": "Claire's search for Chris leads to Rockfort Island and the Antarctic research base."
         }
       ],
       "branches": []
