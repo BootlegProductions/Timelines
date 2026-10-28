@@ -414,3 +414,23 @@ body.theme-resident{--bg:#faf2f1;--ink:#40292d;--green:#b4434b;--green-dark:#902
 .section-return{margin-top:35px}
 @media(max-width:800px){.views-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:680px){.section-page{padding:26px 0 65px}.views-grid{grid-template-columns:1fr}.collection-emblem{width:85px;height:85px;font-size:50px}.view-card{min-height:200px}.section-title{font-size:clamp(45px,11vw,68px)}}
+
+/* Subject-specific palettes remain independent of the reusable green template. */
+body.theme-cosmos{--bg:#f0f4fa;--ink:#253554;--green:#839cd2;--green-dark:#516caf;--soft:#e5edfa;--border:#d5dff0}
+body.theme-prehistoric{--bg:#f7f8ec;--ink:#36482d;--green:#9bad62;--green-dark:#6b8137;--soft:#e8eed8;--border:#dce4cf}
+body.theme-archive{--bg:#f7f4ec;--ink:#473c30;--green:#a38a68;--green-dark:#806547;--soft:#efe7d9;--border:#e2d9c9}
+body.theme-fallout{--bg:#edf4e8;--ink:#28432e;--green:#8bbd5b;--green-dark:#527d32;--soft:#e1edd5;--border:#cedec4}
+body.theme-minecraft{--bg:#f2f7eb;--ink:#344a2f;--green:#84b55b;--green-dark:#528b35;--soft:#e3efdb;--border:#cfe3c6}
+body.theme-resident{--bg:#f8f2f3;--ink:#453038;--green:#b15f6b;--green-dark:#853e50;--soft:#f3e2e6;--border:#e6d3d8}
+.collection-cosmos{background:linear-gradient(135deg,#192e4f,#405e84)!important;color:white!important}
+.collection-cosmos .eyebrow,.collection-cosmos p{color:#d8e4f0!important}.collection-cosmos .art{color:#f6e8b3}
+.collection-prehistoric{background:#dee9d0}
+.collection-archive{background:#eee7da}
+.collection-fallout{background:#294735!important;color:#ebf5da!important}
+.collection-fallout .eyebrow,.collection-fallout p{color:#bbd0b1!important}.collection-fallout .art{color:#c2e492}
+.collection-minecraft{background:#d8e9cb}
+.collection-resident{background:#442d35!important;color:#f7e5e8!important}
+.collection-resident .eyebrow,.collection-resident p{color:#e7cbd0!important}.collection-resident .art{color:#ecc3c9}
+body:not(.theme-marvel) .node .circle{background:radial-gradient(circle at 35% 24%,var(--green),var(--green-dark));color:white}
+.theme-cosmos .main-label{background:#415b8b}.theme-archive .main-label{background:#73583d}
+.theme-fallout .main-label{background:#315f3c}.theme-resident .main-label{background:#803848}
