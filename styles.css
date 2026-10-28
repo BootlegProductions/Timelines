@@ -293,3 +293,18 @@ body.theme-marvel{
 .event-source:hover{text-decoration:underline}
 .empty-timeline{padding:75px 20px;text-align:center;color:var(--muted);font-weight:700}
 @media(max-width:680px){.release-type-tools{width:100%;margin-bottom:8px}}
+
+/* v0.5 expandable timeline and illustration assets */
+.event-art{width:70%;height:70%;object-fit:contain;display:block;filter:drop-shadow(0 2px 2px #2225)}
+.event-glyph{font-size:inherit;line-height:1}
+.node .circle,.node.secondary .circle{overflow:hidden}
+.panel-icon .event-art{max-width:150px;max-height:150px;object-fit:contain}
+.frame-actions{display:flex;align-items:center;gap:10px}
+#expand-timeline,#close-immersive{border:1px solid var(--border);background:white;color:var(--ink);border-radius:8px;padding:9px 12px;font-size:12px;font-weight:800;white-space:nowrap}
+#close-immersive{display:none}
+body.immersive-open{overflow:hidden}
+.timeline-shell.immersive{position:fixed!important;inset:0!important;z-index:90;width:100vw!important;height:100dvh!important;margin:0!important;border-radius:0!important;max-width:none!important;max-height:none!important;display:flex;flex-direction:column;box-shadow:0 0 0 9999px #0008!important}
+.timeline-shell.immersive .frame-top,.timeline-shell.immersive .frame-bottom,.timeline-shell.immersive .map-legend{flex:none}
+.timeline-shell.immersive .stage-scroller{flex:1 1 auto!important;height:auto!important;min-height:0;max-height:none!important;overflow:auto!important}
+.timeline-shell.immersive #close-immersive{display:inline-block!important}
+@media(max-width:680px){.frame-actions .hint{display:none}.timeline-shell.immersive .frame-top{padding-top:max(12px,env(safe-area-inset-top))}.timeline-shell.immersive .frame-bottom{padding-bottom:max(12px,env(safe-area-inset-bottom))}}
