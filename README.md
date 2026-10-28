@@ -66,3 +66,43 @@ Release dates vary by territory. The Doomsday timeline entry shows the official 
 - https://www.disneyplus.com/en-gb/explore/articles/daredevil-born-again-season-2
 - https://thewaltdisneycompany.com/press-releases/disney-completes-marvel-acquisition/
 - https://thewaltdisneycompany.com/press-releases/disney-21st-century-fox-acquisition-closing-date/
+
+## Version 0.5 — History, Games and immersive mobile viewing
+
+The website now includes eight subjects, each with one or more timeline views:
+
+- **Marvel** — film/series releases, fictional chronology and studio history
+- **The Universe** — cosmic evolution and the history of Earth and life
+- **Dinosaurs & Prehistory** — the Triassic/Jurassic/Cretaceous eras and dinosaur evolution
+- **World War I** — major events from 1914 through the peace negotiations
+- **World War II** — global chronology and a separate Pacific theatre view
+- **Fallout** — fictional events and real-world game-release chronology
+- **Minecraft** — overview, Java Edition, Bedrock Edition, and Pocket/Mobile Edition development
+- **Resident Evil** — outbreak/character chronology and a focused Raccoon City 1998 view
+
+### How navigation works
+
+Browse at `#/collections`, choose `#/category/History` or `#/category/Games`, or use `#/collection/fallout` to enter a subject. Open an individual view using `#/t/<slug>/<view>` (for example, `#/t/minecraft/java`).
+
+Legacy `#/marvel/release` URLs remain supported.
+
+### Full-screen timeline
+
+On a touchscreen, **double-tap the negative space** inside the timeline canvas to expand it to a full-viewport overlay. A visible **Expand** button offers the same result. Use **Close**, the same button or Escape to exit. Touch-dragging, arrow navigation and event details work inside this mode. Horizontal remains the automatic layout on mobile and desktop, with vertical available as a manual override.
+
+### Artwork and future assets
+
+Temporary original symbolic SVG artwork lives in `assets/`. The shared event renderer selects a pictogram by collection/character. Future user-supplied assets can be assigned per event using `image: "assets/your-file.webp"` in its data entry. Avoid copying copyrighted promotional art without appropriate rights. The green `template.html` uses exactly the same shared JavaScript and CSS and continues to receive generic improvements.
+
+### Editorial notes
+
+The world-history, game-lore and entertainment timelines are starter editorial selections rather than exhaustive databases. Prehistoric and cosmic ages are approximate and **node spacing is not proportional to elapsed time**. Fictional chronologies can contain branching canon and ambiguities. Before expanding into a reference encyclopaedia, review each entry and add event-level primary or authoritative citations.
+
+Useful starting sources:
+
+- https://science.nasa.gov/universe/overview/
+- https://www.nps.gov/subjects/geology/time-scale.htm
+- https://www.iwm.org.uk/
+- https://fallout.bethesda.net/en-US/news/fallout25-presents-the-fallout-timeline
+- https://www.minecraft.net/en-us/updates/minecraft-updates-timeline-and-evolution
+- https://game.capcom.com/residentevil/en/
